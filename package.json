@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-typeahead",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "React-based typeahead using the Bootstrap theme",
   "main": "dist/react-bootstrap-typeahead.js",
   "directories": {
@@ -40,8 +40,8 @@
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.2.0",
-    "react-dom": "^0.14.0 || ^15.2.0"
+    "react": "^0.14.0 || ^16.9.0",
+    "react-dom": "^0.14.0 || ^16.9.0"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
