@@ -228,7 +228,11 @@ class Typeahead extends React.Component {
         onKeyDown={e => this._handleKeydown(results, e)}
         onRemove={this._handleRemoveOption}
         options={results}
-        ref="input"
+        ref={node => {
+          this.input = node;
+          if (!this.refs) this.refs = {};
+          this.refs.input = node;
+        }}
         selected={selected.slice()}
         value={getInputText({activeItem, labelKey, multiple, selected, text})}
       />

@@ -74,7 +74,11 @@ class TokenizerInput extends React.Component {
           onFocus={this.props.onFocus}
           onKeyDown={this._handleKeydown}
           placeholder={selected.length ? null : placeholder}
-          ref="input"
+          ref={node => {
+            this.input = node;
+            if (!this.refs) this.refs = {};
+            this.refs.input = node;
+          }}
           type="text"
           value={value}
         />

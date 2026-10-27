@@ -2997,7 +2997,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        onRemove: _this._handleRemoveOption,
 	        options: results,
-	        ref: 'input',
+	        ref: function ref(node) {
+	          _this.input = node;
+	          if (!_this.refs) _this.refs = {};
+	          _this.refs.input = node;
+	        },
 	        selected: selected.slice(),
 	        value: (0, _getInputText2.default)({ activeItem: activeItem, labelKey: labelKey, multiple: multiple, selected: selected, text: text })
 	      }));
@@ -7226,6 +7230,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(TokenizerInput, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var _props = this.props,
 	          bsSize = _props.bsSize,
 	          disabled = _props.disabled,
@@ -7270,7 +7276,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onFocus: this.props.onFocus,
 	          onKeyDown: this._handleKeydown,
 	          placeholder: selected.length ? null : placeholder,
-	          ref: 'input',
+	          ref: function ref(node) {
+	            _this2.input = node;
+	            if (!_this2.refs) _this2.refs = {};
+	            _this2.refs.input = node;
+	          },
 	          type: 'text',
 	          value: value
 	        })
