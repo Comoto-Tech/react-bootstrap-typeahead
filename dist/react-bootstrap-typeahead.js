@@ -222,11 +222,11 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (!newClass) {
 				return value;
 			}
-		
+
 			if (value) {
 				return value + ' ' + newClass;
 			}
-		
+
 			return value + newClass;
 		}
 
@@ -2931,7 +2931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    _this.blur = function () {
-	      _this.refs.input.blur();
+	      _this.input && _this.input.blur();
 	      _this._hideDropdown();
 	    };
 
@@ -2943,7 +2943,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    _this.focus = function () {
-	      _this.refs.input.focus();
+	      _this.input && _this.input.focus();
+	    };
+
+	    _this.getInput = function () {
+	      return _this.input;
 	    };
 
 	    _this._renderInput = function (results) {
@@ -2999,8 +3003,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        options: results,
 	        ref: function ref(node) {
 	          _this.input = node;
-	          if (!_this.refs) _this.refs = {};
-	          _this.refs.input = node;
 	        },
 	        selected: selected.slice(),
 	        value: (0, _getInputText2.default)({ activeItem: activeItem, labelKey: labelKey, multiple: multiple, selected: selected, text: text })
@@ -3049,7 +3051,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          container: bodyContainer ? document.body : _this,
 	          show: showMenu && text.length >= minLength,
 	          target: function target() {
-	            return _this.refs.input;
+	            return _this.input;
 	          } },
 	        menu
 	      );
@@ -3267,6 +3269,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _this.props.onInputChange(text);
 	    };
 
+	    _this.input = null;
+	    _this.refs = {};
 	    _this.state = getInitialState(props);
 	    return _this;
 	  }
@@ -7276,11 +7280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onFocus: this.props.onFocus,
 	          onKeyDown: this._handleKeydown,
 	          placeholder: selected.length ? null : placeholder,
-	          ref: function ref(node) {
-	            _this2.input = node;
-	            if (!_this2.refs) _this2.refs = {};
-	            _this2.refs.input = node;
-	          },
+	          ref: 'input',
 	          type: 'text',
 	          value: value
 	        })

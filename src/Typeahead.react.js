@@ -46,6 +46,8 @@ function getInitialState(props) {
 class Typeahead extends React.Component {
   constructor(props) {
     super(props);
+    this.input = null;
+    this.refs = {};
     this.state = getInitialState(props);
   }
 
@@ -163,7 +165,7 @@ class Typeahead extends React.Component {
   }
 
   blur = () => {
-    this.refs.input.blur();
+    this.input && this.input.blur();
     this._hideDropdown();
   }
 
@@ -179,7 +181,11 @@ class Typeahead extends React.Component {
   }
 
   focus = () => {
-    this.refs.input.focus();
+    this.input && this.input.focus();
+  }
+
+  getInput = () => {
+    return this.input;
   }
 
   _renderInput = results => {
@@ -230,8 +236,6 @@ class Typeahead extends React.Component {
         options={results}
         ref={node => {
           this.input = node;
-          if (!this.refs) this.refs = {};
-          this.refs.input = node;
         }}
         selected={selected.slice()}
         value={getInputText({activeItem, labelKey, multiple, selected, text})}
@@ -281,7 +285,7 @@ class Typeahead extends React.Component {
       <Overlay
         container={bodyContainer ? document.body : this}
         show={showMenu && text.length >= minLength}
-        target={() => this.refs.input}>
+        target={() => this.input}>
         {menu}
       </Overlay>
     );
